@@ -1,45 +1,60 @@
-from random import choice
+import random
 import logging
+import os
 
-logging.basicConfig(filename = "base_log.log", level=logging.INFO)
+'''
+Ввод целого числа с проверкой на ошибки.
+Параметры:
+msg - Информационное сообщение пользователю (type str). (Обязательный)
+Ошибки:
+Invalid input - Неверный ввод.
+Number must be greater than 1 - Число не входит в заданный диапазон.
+Возврат:
+Целое число введенное пользователем.
+'''
+def input_int(msg : str) -> int:
+    invalid_input_err = 'Invalid input'
+    out_range_err = 'Number must be greater than 1'
 
-# Ввод
-while True:
-    n = int(input('Введите число N (начиная от 2): '))
-    if n > 1:
-        break
-    else:
-        print('Введите корректное значение!')
+    # Возвращает форматированную строку ошибки.
+    def get_error(text : str):
+        return '\033[31m{}\033[0m'.format('ERROR: ' + text + '! Try again...')
 
-# Наполнение мешка с бочонками
-bag = []
-for i in range(1, n + 1):
-    bag.append(i)
-
-# Выбор бочонка из мешка + его удаление
-def getNumber(num):
-    logging.info(f"getNumber: {num}")
-    print('Вы вытащили бочонок с номером: ', num)
-    del bag[bag.index(num)]
-
-# Нажатие кнопки 
-while len(bag) > 1:
     while True:
-        button = input('Нажать кнопку? (да или нет): ').lower()
-        if button == 'да' or button == 'нет':
-            break
-        else:
-            print('Введите корректную строку! (да или нет)')
-    if button == 'да':
-        logging.info("Button is click")
-        random_number = choice(bag)
-        getNumber(random_number)
-    elif button == 'нет':
-        logging.info("Button is not click")
-        break
+        try:
+            logging.info(msg)
+            num = int(input(msg + ': '))
+            logging.info(f'Пользователь ввел: {num}')
+        except:
+            print(get_error(invalid_input_err))
+            logging.error(invalid_input_err, exc_info=True)
+            continue
 
-if len(bag) == 1:   
-    print('Последний бочонок в мешке c номером: ', bag[0])
-    print('Мешок пуст')
+        if num < 1:
+            print(get_error(out_range_err))
+            logging.error(out_range_err)
+            continue
 
-print('Программа завершена')
+        logging.info(f'Корректно введенное значение: {num}')
+        return num
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO, filename="log_file.log", filemode="a",
+                        format="%(asctime)s %(levelname)s %(message)s")
+    
+    os.system('cls')
+    countBarrels = input_int('Введите количество бочонков')
+    # Генерация списка чисел.
+    barrels = list(range(1, countBarrels + 1))
+    # Перемешивание.
+    random.shuffle(barrels)
+    logging.info(f'Полученная последовательность бочек: {barrels}')
+    
+    print()
+    msg = 'Выпавший бочонок с номером: '
+    for i in range(len(barrels)):
+        # Каждый раз берем и удаляем число из списка.
+        barrel = barrels.pop()
+        print(msg + str(barrel))
+        logging.info(msg + str(barrel))
+        input('Нажмите enter для вытягивания следующего бочонка...')
