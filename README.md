@@ -16,10 +16,12 @@
 
 - 1 Тест
 
-![200160294-d10bf895-37b0-4a99-9ce7-9822f5f11c50](https://user-images.githubusercontent.com/114622207/201995143-c82ba844-abeb-4d8d-b576-12279912e67a.png)
+<img width="306" alt="1" src="https://user-images.githubusercontent.com/114622207/202920670-120fe8bd-1dca-40b6-a2c5-91608905b81a.png">  
 - 2 Тест
 
-![200160317-d2248aab-4296-42d7-a25d-72b642af08f5](https://user-images.githubusercontent.com/114622207/201995185-a6d7bce9-8e30-4e7e-b443-c831eda16c79.png)
+<img width="321" alt="2" src="https://user-images.githubusercontent.com/114622207/202920680-49ac98c9-63ae-40b1-b7f4-13ab75c9dab4.png">
+
 - 3 Тест
 
-![200160334-b17b00ec-b235-4b98-a58f-7247c6dc5d8c](https://user-images.githubusercontent.com/114622207/201995193-e90d45f4-c2e6-46b4-ae75-279c7c4906eb.png)
+<img width="298" alt="3_1" src="https://user-images.githubusercontent.com/114622207/202920683-10a7715b-7eaa-4803-aa9f-a507b30da9a2.png">
+<img width="287" alt="3_2" src="https://user-images.githubusercontent.com/114622207/202920686-dbea860b-4717-457d-a51e-7a10ba89b427.png">
